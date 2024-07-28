@@ -9,8 +9,9 @@ config.data_root = ""  # train set path
 config.val = ""  # test set path
 
 config.anno_files = 'all_list.txt'  # img list files(created by utils\img_to_list.py)
-config.num_classes = 93431
-config.num_image = 5179510
+config.num_classes = 93431  # the number of identity in train set
+config.num_image = 5179510  # the number of all images in train set
+
 config.val_targets = ['lfw', 'cfp_fp', "agedb_30"]
 config.embedding_size = 512
 config.queue_size = int((config.num_classes * 0.3) / config.batch_size) * config.batch_size

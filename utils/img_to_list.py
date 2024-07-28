@@ -15,7 +15,7 @@ def generate(dir):
     listText.close()
 
 
-outer_path = 'the path of your datasets'  # path of datasets
+outer_path = ''  # path of datasets
 
 if __name__ == '__main__':
     i = 0

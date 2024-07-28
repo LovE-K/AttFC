@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(
         description="Distributed Arcface Training in Pytorch")
-    parser.add_argument("--config", default='configs/MS1MV3',
+    parser.add_argument("--config", default='configs/att_cfg',
                         type=str,
                         help="py config file")
     main(parser.parse_args())

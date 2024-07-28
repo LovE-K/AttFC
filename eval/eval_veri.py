@@ -96,7 +96,7 @@ def ver_test(backbone: torch.nn.Module, global_step: int):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Get configurations')
-    parser.add_argument('--config', default="configs/MS1MV3", help='the name of config file')
+    parser.add_argument('--config', default="configs/att_cfg", help='the name of config file')
     args = parser.parse_args()
 
     cfg = get_config(args.config)
