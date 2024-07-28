@@ -20,7 +20,7 @@ Modifying the configuration file `configs/att_cfg.py`, then executing the `train
 python train.py
 ```
 
-## Test
+## Evaluation
 Executing the evaluation script in `eval/` to test the model.
 ```shell
 python eval/eval_veri.py
