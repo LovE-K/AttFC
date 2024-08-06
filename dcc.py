@@ -15,7 +15,7 @@ class DCC(torch.nn.Module):
             batch_size: int,
             embedding_size: int,
             fp16: bool = False,
-            queue_size=8192,
+            queue_size=65536,
             momentum=0.999,
             sample_num=2 + 1,
     ):
