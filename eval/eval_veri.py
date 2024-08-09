@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     cfg = get_config(args.config)
     rec_prefix = cfg.val
-    model_path = cfg.output + "/model4.pt"
+    model_path = cfg.output + f"/model{cfg.num_epoch-1}.pt"
     val_targets = cfg.val_targets
     network = cfg.network
     image_size = cfg.image_size

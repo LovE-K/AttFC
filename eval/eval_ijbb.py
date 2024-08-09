@@ -35,7 +35,7 @@ args = parser.parse_args()
 cfg = get_config(args.config)
 
 target = "IJBB"
-model_path = cfg.output + "/model4.pt"
+model_path = cfg.output + f"/model{cfg.num_epoch-1}.pt"
 image_path = cfg.val + '/ijb/IJBB'
 result_dir = cfg.output
 batch_size = cfg.batch_size
