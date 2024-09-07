@@ -75,7 +75,7 @@ class DCC(torch.nn.Module):
 
         with torch.no_grad():
             self._momentum_update_key_encoder()
-            local_weight = self.get_weight(img_k, cfg, local_embeddings)
+            local_weight = self.get_weight(img_k, cfg, norm_embeddings)
             norm_weight = normalize(local_weight, dim=1)
 
         l_pos = torch.einsum("nc,nc->n", [norm_embeddings, norm_weight]).unsqueeze(-1)
@@ -106,7 +106,7 @@ class DCC(torch.nn.Module):
             param_k.data = param_k.data * self.momentum + param_q.data * (1.0 - self.momentum)
 
     @torch.no_grad()
-    def get_weight(self, img_k, cfg, embeddings):
+    def get_weight(self, img_k, cfg, norm_embeddings):
         with ((torch.no_grad())):
             im_weight = torch.cat(img_k, dim=0)
             w = self.backbone_k(im_weight.to(device))
@@ -117,7 +117,8 @@ class DCC(torch.nn.Module):
             cos_sims = torch.zeros([cfg.sample_num - 1, cfg.batch_size])
             i = 0
             for weight in weights:
-                cos_sim = torch.nn.functional.cosine_similarity(embeddings, weight, dim=1)
+                norm_weight = normalize(weight)
+                cos_sim = torch.nn.functional.cosine_similarity(norm_embeddings, norm_weight, dim=1)
                 cos_sims[i] = cos_sim
                 i += 1
             attention = torch.nn.functional.softmax(cos_sims.transpose_(1, 0), dim=1)
